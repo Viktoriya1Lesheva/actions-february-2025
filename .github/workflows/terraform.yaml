@@ -18,9 +18,9 @@ on:
         default: 'us-east-1'
 
       ami_id:
-        description: 'Enter AMI ID'
+        description: 'Enter ami id'
         required: true
-        
+
       instance_type:
         description: 'Provide instance type'
         required: true
@@ -50,7 +50,7 @@ jobs:
 
     - name: Create tfvars file
       run: |
-        cat <<EOF > terraform.auto.tfvars
+        cat <<EOF > terraform.tfvars
         ami_id = "${{ inputs.ami_id }}"
         instance_type = "${{ inputs.instance_type }}"
         region = "${{ inputs.region }}"
@@ -62,9 +62,9 @@ jobs:
     - name: Terraform Plan
       run: terraform plan
 
-    - name: Terraform actions
+    - name: Terraform Action
       run: |
-        if [[ "${{ inputs.action }}" == apply ]]; then
+        if [[ "${{ inputs.action }}" == "apply" ]]; then
           terraform apply -auto-approve
         else
           terraform destroy -auto-approve
