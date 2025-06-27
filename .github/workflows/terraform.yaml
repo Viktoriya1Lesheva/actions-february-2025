@@ -9,7 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout SCM
-        uses: actions/checkout@v4
-        with:
-          repository: Viktoriya1Lesheva/actions-terraform
+    - name: Checkout SCM
+      uses: actions/checkout@v4
+      with:
+        repository: Viktoriya1Lesheva/actions-terraform
+
+    - run: ls
